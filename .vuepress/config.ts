@@ -4,6 +4,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 
 export default defineUserConfig({
+  base: "/tuxie-library/",
   title: "Tuxie's Library",
   description: "Linux Wiki",
   bundler: viteBundler(),
