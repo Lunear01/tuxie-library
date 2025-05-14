@@ -11,14 +11,15 @@ bannerBrand:
   description: A Linux WIkI Focused on Ubuntu/Debian, Fedora, Arch  !
   tagline: "Editors: aier (Fedora, formerly NixOS), Jose (Arch-based), Lunear (Arch)."
   buttons:
-    - { text: Linux App Library, link: '/docs/md/linuxAppsLibrary' }
-    - { text: Linux Guide, link: '/docs/md/linuxGuides'}
+    - { text: Linux App Library, link: '/tuxie-library/docs/md/linuxAppsLibrary' }
+    - { text: Linux Guide, link: '/tuxie-library/docs/md/linuxGuides'}
     # - { text: Linux Guide, link: '/docs/theme-reco/linuxGuides', type: 'plain' }
+    - { text: Join Our Discord, link: 'https://discord.gg/WkeNeu8NGt', type: 'plain' }
   socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/aier9500/qoolLinuxLib' }
+    - { icon: 'LogoGithub', link: 'https://github.com/Lunear01/tuxie-library/tree/gh-pages' }
 blog:
   socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/aier9500/qoolLinuxLib' }
+    - { icon: 'LogoGithub', link: 'https://github.com/Lunear01/tuxie-library/tree/gh-pages' }
 isShowTitleInHome: true
 actionText: About
 actionLink: /views/other/about
@@ -48,4 +49,3 @@ theme-cli init
 yarn global add @vuepress-reco/theme-cli@1.0.7
 theme-cli init
 ``` -->
-<div class="home-footer"></div>

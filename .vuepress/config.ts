@@ -10,10 +10,10 @@ export default defineUserConfig({
   bundler: viteBundler(),
   // bundler: webpackBundler(),
   theme: recoTheme({
-    logo: "/02.png",
+    logo: "/skibidiPenguin.jpg",
     author: "Lunear, aier",
-    authorAvatar: "/02.png",
-    docsRepo: "https://github.com/aier9500/qoolLinuxLib",
+    authorAvatar: "/skibidiPenguin.jpg",
+    docsRepo: "https://github.com/Lunear01/tuxie-library/tree/gh-pages",
     docsBranch: "main",
     docsDir: "example",
     lastUpdatedText: "",
@@ -36,7 +36,7 @@ export default defineUserConfig({
     },
     navbar: [
       { text: "Home", link: "/" },
-      { text: "Categories", link: "/categories/App-Library/1.html" },
+      { text: "Categories", link: "/categories/Linux-Guide/1.html" },
       // { text: "Tags", link: "/tags/tag1/1.html" },
       {
         text: "Docs",
@@ -48,7 +48,7 @@ export default defineUserConfig({
     ],
     bulletin: {
       title: "Welcome!",
-      body: [
+      body:[
         {
           type: "text",
           content: '🐧 Welcome to our Linux wiki! Built by two uni students 👩‍💻👨‍💻, this doc tracks our Linux adventures across distros—from 📖 basics to 🛠️ scripting, 📦 package mgmt, 🖥️ DEs, and 🔧 troubleshooting. Whether you’re a newbie or a terminal wizard, we hope our notes help! 🚀 Dive in!',
