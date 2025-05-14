@@ -33,8 +33,8 @@ onMounted(() => {
 })
 </script>
 
-<div class="view-counter" style="float:right; font-size:0.85em; color:#666;">
+<!-- <div class="view-counter" style="float:right; font-size:0.85em; color:#666;">
   👁️ {{ views.toLocaleString() }} views
-</div>
+</div> -->
 
 This is Ubuntu/Debian
