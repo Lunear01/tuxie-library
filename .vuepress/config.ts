@@ -8,6 +8,7 @@ export default defineUserConfig({
   title: "Tuxie's Library",
   description: "Linux Wiki",
   bundler: viteBundler(),
+
   // bundler: webpackBundler(),
   theme: recoTheme({
     logo: "/skibidiPenguin.jpg",

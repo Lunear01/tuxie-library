@@ -1,11 +1,3 @@
----
-title: Fedora Linux Guide
-date: 2016/12/15
-categories:
- - Linux Guide
----
-
-<!-- View Counter with Google Analytics as backend -->
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -36,5 +28,3 @@ onMounted(() => {
 <div class="view-counter" style="float:right; font-size:0.85em; color:#666;">
   👁️ {{ views.toLocaleString() }} views
 </div>
-
-This is Fedora linux guide
