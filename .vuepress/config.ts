@@ -1,19 +1,39 @@
 import { defineUserConfig } from "vuepress";
 import recoTheme from "vuepress-theme-reco";
-import { viteBundler } from '@vuepress/bundler-vite'
-import { webpackBundler } from '@vuepress/bundler-webpack'
+import { viteBundler } from '@vuepress/bundler-vite';
+import { webpackBundler } from '@vuepress/bundler-webpack';
+import markdownItWikilinks from 'markdown-it-wikilinks';
 
 export default defineUserConfig({
   base: "/tuxie-library/",
   title: "Tuxie's Library",
   description: "Linux Wiki",
   bundler: viteBundler(),
-
+  
   // bundler: webpackBundler(),
+  head: [
+      [
+        "script",
+        {
+          async: true,
+          src: "https://www.googletagmanager.com/gtag/js?id=G-LCT48BR4CV",
+        },
+      ],
+      [
+        "script",
+        {},
+        `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LCT48BR4CV');
+        `,
+      ],
+    ],
   theme: recoTheme({
     logo: "/skibidiPenguin.jpg",
-    author: "Lunear, aier",
-    authorAvatar: "/skibidiPenguin.jpg",
+    // author: "Lunear, aier",
+    // authorAvatar: "/skibidiPenguin.jpg",
     docsRepo: "https://github.com/Lunear01/tuxie-library/tree/gh-pages",
     docsBranch: "main",
     docsDir: "example",
@@ -23,7 +43,9 @@ export default defineUserConfig({
       "/docs/md/": [
         {
           text: "Linux App Library",
-          children: ["linuxAppsLibrary","editorsChoice", "essentials", "popular", "gnomie"],  
+          children: ["linuxAppsLibrary","editorsChoice", "essentials", "popular", "gnomie", "FirefoxBasedUser.jsTweaks", 
+            "Terminal-Customization-(Bash)"
+          ],  
         },
         {
           text: "Linux Guides",
@@ -37,7 +59,7 @@ export default defineUserConfig({
     },
     navbar: [
       { text: "Home", link: "/" },
-      { text: "Categories", link: "/categories/Linux-Guide/1.html" },
+      // { text: "Categories", link: "/categories/Linux-Guide/1.html" },
       // { text: "Tags", link: "/tags/tag1/1.html" },
       {
         text: "Docs",
@@ -106,6 +128,6 @@ export default defineUserConfig({
     //     // hideComments: true // 隐藏评论
     //   },
     // },
-  }),
+  },),
   // debug: true,
 });

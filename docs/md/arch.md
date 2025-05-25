@@ -1,9 +1,45 @@
 ---
 title: Arch Linux Guide
 date: 2025/05/04
+author: Lunear
+views: true
 categories:
  - Linux Guide
 ---
+
+<!-- View Counter with Google Analytics as backend -->
+
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const views = ref(0)
+
+onMounted(() => {
+  // Initialize GA4
+  if (typeof window.gtag === 'undefined') {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-LCT48BR4CV'
+    document.head.appendChild(script)
+    
+    window.dataLayer = window.dataLayer || []
+    function gtag(){dataLayer.push(arguments)}
+    gtag('js', new Date())
+    gtag('config', 'G-LCT48BR4CV')
+  }
+
+  // Client-side counter (fallback)
+  const key = `views-${window.location.pathname}`
+  views.value = parseInt(localStorage.getItem(key)) || 0
+  views.value++
+  localStorage.setItem(key, views.value)
+})
+</script>
+
+<!-- <div class="view-counter" style="float:right; font-size:0.85em; color:#666;">
+  👁️ {{ views.toLocaleString() }} views
+</div> -->
+
 
 ## Arch Installation Guide
 
@@ -272,11 +308,92 @@ pacstrap -K /mnt base linux linux-firmware nano networkmanager
     ```bash
     sudo pacman -Syu 
     ```
-2. Install fastfetch 
+3. Install fastfetch 
     ```bash
     sudo pacman -S fastfetch
     ```
-3. Run fastfetch 
+4. Run fastfetch 
 
 
-### Part 10.  Take picture and prove you’re a prestigious Arch user
+5. Take picture and prove you’re a prestigious Arch user
+
+### Part 10. Post Installation
+1. [Desktop Environment](https://wiki.archlinux.org/title/Desktop_environment): 
+    - [Gnome](https://www.gnome.org/)
+        ```bash 
+        sudo pacman -S gnome
+    - [KDE Plasma](https://kde.org/plasma-desktop/)
+        ```bash
+        sudo pacman -S plasma-meta
+    - [Hyprland](https://hyprland.org/)
+        - For installation details follow the [official wiki page](https://wiki.hyprland.org/Getting-Started/Installation/)
+2. Audio (Pulse Audio vs. Pipewire)
+    - [PipeWire](https://wiki.archlinux.org/title/PipeWire): (Recommended for Most Users)
+        - Modern features (Bluetooth LDAC, pro audio support) 
+        - Screen recording (OBS, Wayland screencasting)
+        - Use JACK applications (DAWs like Ardour, REAPER) 
+        - Lower latency (audio production, gaming) 
+        - Running Wayland (better integration)
+    ```bash 
+    sudo pacman -S pipewire pipewire-pulse pipewire-jack wireplumber
+    systemctl --user enable --now pipewire pipewire-pulse wireplumber
+    ```
+
+    - [Pulse Audio](https://wiki.archlinux.org/title/PulseAudio): (For older applications)
+        - Using very old applications (with hardcoded PulseAudio support)
+        - Prefer simplicity over advanced features
+        - Troubleshooting PipeWire issues (fallback option)
+        - Running Xorg-only systems without Wayland needs
+    ```bash 
+    sudo pacman -S pulseaudio pulseaudio-alsa pavucontrol
+    systemctl --user enable --now pulseaudio
+    ```
+
+## [ROG Asusctl](https://asus-linux.org/)
+1. Repo: 
+    ```bash 
+    sudo pacman-key --recv-keys 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+
+    sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+
+    sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+
+    sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
+    ```
+- Edit ``/etc/pacman.conf`` and add 
+    ```bash
+    [g14]
+    Server = https://arch.asus-linux.org
+    ```
+- Perform a full system update
+    ```bash
+    sudo pacman -Suy
+    ```
+2. Asusctl -  custom fan profiles, anime, led control etc.
+    ```bash 
+    pacman -S asusctl power-profiles-daemon
+    systemctl enable --now power-profiles-daemon.service
+    ```
+3. Superfxctl - graphics switching
+    ```bash
+    pacman -S supergfxctl switcheroo-control
+    systemctl enable --now supergfxd
+    systemctl enable --now switcheroo-control
+    ```
+4. ROG Control Center - GUI
+    ```bash 
+    pacman -S rog-control-center
+    ```
+5. Custom Kernel
+    ```bash
+    pacman -Sy linux-g14 linux-g14-headers
+    grub-mkconfig -o /boot/grub/grub.cfg
+    ```
+    - Run ``unname -r`` it should output: 
+        ```bash
+        # -g14 is the important one
+        6.8.1-arch1-g14
+        ```
+    **Note:** If you are using a custom kernel use the ``nvidia-dkms`` package for nvidia drivers.
+    ```bash
+    sudo pacman -S nvidia-dkms
