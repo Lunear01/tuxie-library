@@ -8,7 +8,7 @@ Scroll down to [Index](#index).
 Discord server: https://discord.gg/WkeNeu8NGt.
 
 **<sub>Editors:</sub>**\
-aier (Fedora, formerly NixOS), Jose (Arch-based), Lunear (Arch).
+aier (Fedora, formerly NixOS), Lunear (Arch).
 
 P.S. You can always just search for these apps in your app store (if your desktop environment or distro comes with one) instead of using the terminal.
 
@@ -28,25 +28,25 @@ flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/fl
 
 ## Index
 
-### [Editor’s Choice](/docs/theme-reco/editorsChoice.md)
+### [Editor’s Choice](/docs/md/editorsChoice.md)
 
 Try them out!
 
 These are apps that the editors have found a use for or have found very interesting.
 
-### [Essentials](/docs/theme-reco/essentials.md)
+### [Essentials](/docs/md/essentials.md)
 
 Highly recommended.
 
 These are apps that facilitate the use of your system and unlock its full potential.
 
-### [Popular](/docs/theme-reco/popular.md)
+### [Popular](/docs/md/popular.md)
 
 Download as needed.
 
 Your favorite apps from Windows/Mac, but on Linux!
 
-### [Gnomie](/docs/theme-reco/gnomie.md)
+### [Gnomie](/docs/md/gnomie.md)
 
 For the Gnome fans!
 
