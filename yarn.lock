@@ -6340,7 +6340,7 @@ vue-router@^4.4.5, vue-router@^4.5.0, vue-router@^4.5.1:
     "@vue/server-renderer" "3.5.13"
     "@vue/shared" "3.5.13"
 
-vuepress-theme-reco@2.0.0-rc.26:
+vuepress-theme-reco@^2.0.0-rc.26:
   version "2.0.0-rc.26"
   resolved "https://registry.npmjs.org/vuepress-theme-reco/-/vuepress-theme-reco-2.0.0-rc.26.tgz"
   integrity sha512-p6X5vfBYzCBCCVd7xlJ148BZNynPRtEW0b7lp3+HBNDDCVkjhu//daLbP8dtAcNsk8Dt+70ANPdcgcqOtwm53Q==
