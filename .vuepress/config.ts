@@ -31,57 +31,6 @@ export default defineUserConfig({
         `,
       ],
     ],
-  
-  // Add markdown extensions here
-  extendsMarkdown: (md) => {
-    // Add custom containers for tip, warning, danger
-    md.use(markdownItContainer, 'tip', {
-      validate: function(params) {
-        return params.trim().match(/^tip\s+(.*)$/);
-      },
-      render: function (tokens, idx) {
-        const m = tokens[idx].info.trim().match(/^tip\s+(.*)$/);
-        if (tokens[idx].nesting === 1) {
-          // Opening tag
-          return '<div class="custom-container tip"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'TIP') + '</p>\n';
-        } else {
-          // Closing tag
-          return '</div>\n';
-        }
-      }
-    });
-    
-    md.use(markdownItContainer, 'warning', {
-      validate: function(params) {
-        return params.trim().match(/^warning\s+(.*)$/);
-      },
-      render: function (tokens, idx) {
-        const m = tokens[idx].info.trim().match(/^warning\s+(.*)$/);
-        if (tokens[idx].nesting === 1) {
-          return '<div class="custom-container warning"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'WARNING') + '</p>\n';
-        } else {
-          return '</div>\n';
-        }
-      }
-    });
-    
-    md.use(markdownItContainer, 'danger', {
-      validate: function(params) {
-        return params.trim().match(/^danger\s+(.*)$/);
-      },
-      render: function (tokens, idx) {
-        const m = tokens[idx].info.trim().match(/^danger\s+(.*)$/);
-        if (tokens[idx].nesting === 1) {
-          return '<div class="custom-container danger"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'DANGER') + '</p>\n';
-        } else {
-          return '</div>\n';
-        }
-      }
-    });
-    
-    // Add your existing wikilinks plugin if needed
-    // md.use(markdownItWikilinks());
-  },
 
   theme: recoTheme({
     logo: "/skibidiPenguin.jpg",

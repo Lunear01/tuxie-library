@@ -7,9 +7,8 @@ categories:
  - Linux Guide
 ---
 
-::: tip 
-> 
-> This guide will walk you through a few changes you can make to your `user.js` that will make your Firefox-based experience of Linux much more polished. 
+::: info
+This guide will walk you through a few changes you can make to your `user.js` that will make your Firefox-based experience of Linux much more polished. 
 :::
 
 # How can you append these changes?
@@ -60,13 +59,7 @@ user_pref("zen.view.compact.toolbar-flash-popup", false); // false
 
 
 ::: warning
-> Many Firefox users (us included), feel that the Firefox default scrolling is quite slow on 
-> 
-> the mousewheel, or too fast on the trackpad, or not smooth enough, or not dynamic 
-> 
-> enough. 
-> 
-> However you want your scrolling, hopefully you can customize the options we'll provide you to suit your needs. 
+Many Firefox users (us included), feel that the Firefox default scrolling is quite slow on the mousewheel, or too fast on the trackpad, or not smooth enough, or not dynamic enough. However you want your scrolling, hopefully you can customize the options we'll provide you to suit your needs. 
 :::
 
 ## Mousewheel scrolling
