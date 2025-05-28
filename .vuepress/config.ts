@@ -3,6 +3,7 @@ import recoTheme from "vuepress-theme-reco";
 import { viteBundler } from '@vuepress/bundler-vite';
 import { webpackBundler } from '@vuepress/bundler-webpack';
 import markdownItWikilinks from 'markdown-it-wikilinks';
+import markdownItContainer from 'markdown-it-container';
 
 export default defineUserConfig({
   base: "/tuxie-library/",
@@ -30,15 +31,64 @@ export default defineUserConfig({
         `,
       ],
     ],
+  
+  // Add markdown extensions here
+  extendsMarkdown: (md) => {
+    // Add custom containers for tip, warning, danger
+    md.use(markdownItContainer, 'tip', {
+      validate: function(params) {
+        return params.trim().match(/^tip\s+(.*)$/);
+      },
+      render: function (tokens, idx) {
+        const m = tokens[idx].info.trim().match(/^tip\s+(.*)$/);
+        if (tokens[idx].nesting === 1) {
+          // Opening tag
+          return '<div class="custom-container tip"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'TIP') + '</p>\n';
+        } else {
+          // Closing tag
+          return '</div>\n';
+        }
+      }
+    });
+    
+    md.use(markdownItContainer, 'warning', {
+      validate: function(params) {
+        return params.trim().match(/^warning\s+(.*)$/);
+      },
+      render: function (tokens, idx) {
+        const m = tokens[idx].info.trim().match(/^warning\s+(.*)$/);
+        if (tokens[idx].nesting === 1) {
+          return '<div class="custom-container warning"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'WARNING') + '</p>\n';
+        } else {
+          return '</div>\n';
+        }
+      }
+    });
+    
+    md.use(markdownItContainer, 'danger', {
+      validate: function(params) {
+        return params.trim().match(/^danger\s+(.*)$/);
+      },
+      render: function (tokens, idx) {
+        const m = tokens[idx].info.trim().match(/^danger\s+(.*)$/);
+        if (tokens[idx].nesting === 1) {
+          return '<div class="custom-container danger"><p class="custom-container-title">' + (m && m[1] ? m[1] : 'DANGER') + '</p>\n';
+        } else {
+          return '</div>\n';
+        }
+      }
+    });
+    
+    // Add your existing wikilinks plugin if needed
+    // md.use(markdownItWikilinks());
+  },
+
   theme: recoTheme({
     logo: "/skibidiPenguin.jpg",
-    // author: "Lunear, aier",
-    // authorAvatar: "/skibidiPenguin.jpg",
     docsRepo: "https://github.com/Lunear01/tuxie-library/tree/gh-pages",
     docsBranch: "main",
     docsDir: "example",
     lastUpdatedText: "",
-    // series 为原 sidebar
     series: {
       "/docs/md/": [
         {
@@ -51,16 +101,10 @@ export default defineUserConfig({
           text: "Linux Guides",
           children: ["linuxGuides","ubuntu_debian","fedora", "arch"],  
         }
-        // {
-          // text: "Essentials",
-          // children: ["api", "plugin"],
-        // },
       ],
     },
     navbar: [
       { text: "Home", link: "/" },
-      // { text: "Categories", link: "/categories/Linux-Guide/1.html" },
-      // { text: "Tags", link: "/tags/tag1/1.html" },
       {
         text: "Docs",
         children: [
@@ -74,29 +118,12 @@ export default defineUserConfig({
       body:[
         {
           type: "text",
-          content: '🐧 Welcome to our Linux wiki! Built by two uni students 👩‍💻👨‍💻, this doc tracks our Linux adventures across distros—from 📖 basics to 🛠️ scripting, 📦 package mgmt, 🖥️ DEs, and 🔧 troubleshooting. Whether you’re a newbie or a terminal wizard, we hope our notes help! 🚀 Dive in!',
+          content: "🐧 Welcome to our Linux wiki! Built by two uni students 👩‍💻👨‍💻, this doc tracks our Linux adventures across distros—from 📖 basics to 🛠️ scripting, 📦 package mgmt, 🖥️ DEs, and 🔧 troubleshooting. Whether you're a newbie or a terminal wizard, we hope our notes help! 🚀 Dive in!",
           style: "font-size: 12px;",
         },
         {
           type: "hr",
         },
-        // {
-        //   type: "title",
-        //   content: "QQ 群",
-        // },
-        // {
-        //   type: "text",
-        //   content: `
-        //   <ul>
-        //     <li>QQ群1：1037296104</li>
-        //     <li>QQ群2：1061561395</li>x`
-        //     <li>QQ群3：962687802</li>
-        //   </ul>`,
-        //   style: "font-size: 12px;",
-        // },
-        // {
-        //   type: "hr",
-        // },
         {
           type: "title",
           content: "GitHub and Discord",
@@ -115,19 +142,5 @@ export default defineUserConfig({
         }
       ],
     },
-    // commentConfig: {
-    //   type: 'valine',
-    //   // options 与 1.x 的 valineConfig 配置一致
-    //   options: {
-    //     // appId: 'xxx',
-    //     // appKey: 'xxx',
-    //     // placeholder: '填写邮箱可以收到回复提醒哦！',
-    //     // verify: true, // 验证码服务
-    //     // notify: true,
-    //     // recordIP: true,
-    //     // hideComments: true // 隐藏评论
-    //   },
-    // },
-  },),
-  // debug: true,
+  }),
 });

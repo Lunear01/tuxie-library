@@ -5,16 +5,17 @@ author: aier
 categories:
   - Linux Guide
 ---
-
+::: tip
 > 
 > 
 > This guide will walk you through customizing your Bash prompt, how to run `fastfetch` on start in your terminal, and a few useful terminal programs. 
+:::
 
-> 
-> 
+::: warning
 > This tutorial assumes that you are using Bash as your shell, even though some part of the tutorial may apply to non-Bash shells. 
 > 
 > **For non-Bash users, we cannot guarantee success and will not take responsibility to damages to your system.** 
+:::
 
 # Back up current `.bashrc`
 
@@ -173,10 +174,11 @@ alias lsta3='eza -Ta --level 3'
 
 ## Using `fzf` (Fuzzy Find)
 
+::: danger QUESTION
 > What is `fzf`?
 > 
 > `fzf` is a command-line fuzzy finder that helps you quickly search and navigate files, directories, command history, and more. 
-
+:::
 ### Installation
 
 ##### Debian/Ubuntu
@@ -211,12 +213,11 @@ alias zh='history | fzf'# search in bash command history
 - [More info](https://github.com/junegunn/fzf?tab=readme-ov-file) about `fzf` from the official `fzf` GitHub page. 
 
 ## Using `zoxide`
-::: note
-This is a note (Reco-specific)
-:::
+::: tip
 > 
 > `zoxide` is a terminal program that is like `cd` on steroids. It provides `cd`'s functionality with the addition of being able to jump to directories with short, fuzzy-matched commands. 
 
+:::
 ### Installation
 
 ##### Debian/Ubuntu
@@ -252,10 +253,11 @@ eval "$(zoxide init bash)"
 
 ## Using `eza`
 
-> [!question] What is `eza`?
+::: danger QUESTION
+> What is `eza`?
 > 
 > `eza` is a modern alternative to the classic `ls`, it provides color-coding, tree-styled outputs, git integration, and more. 
-
+:::
 ### Installation
 ##### Debian/Ubuntu
 
