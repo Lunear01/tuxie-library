@@ -22,7 +22,7 @@ footer:
   view: true
 
 ---
-
+<!-- 
 ## 快速开始
 
 **npx**
@@ -48,4 +48,4 @@ yarn global add @vuepress-reco/theme-cli@1.0.7
 theme-cli init
 ```
 
-  <TotalViews />
+  <TotalViews /> -->
